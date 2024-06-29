@@ -1,7 +1,7 @@
 "use client";
 
 import { smoothScroll } from "../utils";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import {
   Faqs,
   Footer,
@@ -10,6 +10,7 @@ import {
   Projects,
   ServicesSection,
 } from "../components";
+import { supabase } from "../utils/supabase";
 
 export default function Home() {
   useLayoutEffect(() => {
@@ -19,6 +20,16 @@ export default function Home() {
         destroy();
       };
     })();
+  }, []);
+
+  useEffect(() => {
+    const getProjects = async () => {
+      let { data: Projects }: any = await supabase.from("Projects").select("*");
+
+      localStorage.setItem("projects", JSON.stringify(Projects));
+    };
+
+    getProjects();
   }, []);
 
   return (

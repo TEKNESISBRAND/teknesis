@@ -1,5 +1,4 @@
 import Project from "./Project";
-import { projects } from "../data";
 
 export default function Projects({
   showTitle,
@@ -8,6 +7,7 @@ export default function Projects({
   showTitle: boolean;
   limit?: number;
 }) {
+  const projects = JSON.parse(localStorage.getItem("projects") || "[]");
   return (
     <section
       id="projects"
@@ -22,15 +22,18 @@ export default function Projects({
         </div>
       )}
       <div>
-        {(limit ? projects.slice(0, limit) : projects).map((project, i) => (
-          <Project
-            key={i}
-            slug={project.slug}
-            name={project.name}
-            index={i}
-            tags={project.tags}
-          />
-        ))}
+        {(limit ? projects.slice(0, limit) : projects).map(
+          (project: any, i: number) => (
+            <Project
+              key={i}
+              slug={project.slug}
+              name={project.name}
+              index={i}
+              tags={project.tags}
+              category={project.category}
+            />
+          )
+        )}
         <div className="border-t-2 border-[#6e6e6e] border-opacity-15"></div>
       </div>
     </section>

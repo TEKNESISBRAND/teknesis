@@ -6,10 +6,11 @@ type Props = {
   name: string;
   index: number;
   slug: string;
+  type: string;
   tags: string[];
 };
 
-export default function Project({ name, index, tags, slug }: Props) {
+export default function Project({ name, index, tags, slug, type }: Props) {
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [mouseData, setMouseData] = useState({
     x: 0,
@@ -100,7 +101,7 @@ export default function Project({ name, index, tags, slug }: Props) {
 
   return (
     <Link
-      href={`/projects/${slug}`}
+      href={`/projects/${type}/${slug}`}
       onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
