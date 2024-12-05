@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Project from "./Project";
 
 export default function Projects({
@@ -7,7 +10,11 @@ export default function Projects({
   showTitle: boolean;
   limit?: number;
 }) {
-  const projects = JSON.parse(localStorage.getItem("projects") || "[]");
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    setProjects(JSON.parse(localStorage.getItem("projects") || "[]"));
+  }, []);
   return (
     <section
       id="projects"
@@ -22,18 +29,19 @@ export default function Projects({
         </div>
       )}
       <div>
-        {(limit ? projects.slice(0, limit) : projects).map(
-          (project: any, i: number) => (
-            <Project
-              key={i}
-              slug={project.slug}
-              name={project.name}
-              index={i}
-              tags={project.tags}
-              category={project.category}
-            />
-          )
-        )}
+        {projects &&
+          (limit ? projects?.slice(0, limit) : projects).map(
+            (project: any, i: number) => (
+              <Project
+                key={i}
+                slug={project.slug}
+                name={project.name}
+                index={i}
+                tags={project.tags}
+                type={project.type}
+              />
+            )
+          )}
         <div className="border-t-2 border-[#6e6e6e] border-opacity-15"></div>
       </div>
     </section>

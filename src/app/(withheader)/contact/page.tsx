@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Package } from "@/teknesis/components";
+import { Package } from "@/teknesis/components";
 import { pricing } from "@/teknesis/data";
 import { smoothScroll } from "@/teknesis/utils";
 import Image from "next/image";
@@ -17,7 +17,6 @@ export default function ContactPage() {
   }, []);
   return (
     <>
-      <Header />
       <section className="px-[16px] md:px-60 py-20 md:py-40 text-[#1b1b1b]">
         <div className="mt-10">
           {pricing.map(

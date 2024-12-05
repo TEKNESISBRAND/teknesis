@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Amplify sales and customer awareness",
+    "media": {
+      "type": "image",
+      "src": "/social.png"
+    }
+  },
+  {
+    "name": "Elevate customer experience and satisfaction",
+    "media": {
+      "type": "video",
+      "src": "1.mp4"
+    }
+  },
+  {
+    "name": "Forge modern brand identities",
+    "media": {
+      "type": "image",
+      "src": "/branding.png"
+    }
+  },
+  {
+    "name": "Propel businesses from startup to success",
+    "media": {
+      "type": "video",
+      "src": "1.mp4"
+    }
+  }
+]

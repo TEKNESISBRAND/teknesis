@@ -1,4 +1,6 @@
-import { useLayoutEffect, useRef, useState } from "react";
+"use client";
+
+import { useLayoutEffect, useRef } from "react";
 import TextAnimation from "./TextAnimation";
 import { gsap, slideScroll } from "../utils";
 import { services } from "../data";

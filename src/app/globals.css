@@ -4,8 +4,10 @@
 
 * {
   @apply p-0 m-0 box-border;
+  /* scroll-behavior: smooth; */
 }
 
 body {
   @apply overflow-x-hidden relative;
+  min-height: 100vh;
 }

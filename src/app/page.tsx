@@ -11,6 +11,7 @@ import {
   ServicesSection,
 } from "../components";
 import { supabase } from "../utils/supabase";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function Home() {
   useLayoutEffect(() => {
@@ -27,6 +28,12 @@ export default function Home() {
       let { data: Projects }: any = await supabase.from("Projects").select("*");
 
       localStorage.setItem("projects", JSON.stringify(Projects));
+
+      const types = Array.from(
+        new Set(["all", ...Projects.map(({ type }: any) => type)])
+      );
+
+      localStorage.setItem("types", JSON.stringify(types));
     };
 
     getProjects();
@@ -40,6 +47,7 @@ export default function Home() {
       <Projects showTitle limit={3} />
       <Faqs />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

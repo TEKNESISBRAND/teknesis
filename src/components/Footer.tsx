@@ -20,7 +20,7 @@ export default function Footer() {
       <div className="border-t-2 my-8 md:my-10 border-[#6e6e6e] border-opacity-15"></div>
       <div className="flex flex-col md:flex-row items-center text-[2rem] md:text-[2.6rem] md:items-start md:justify-between">
         <p className="order-3 md:order-1">
-          &copy;{new Date().getFullYear()} Teknesis. All rights eserved
+          &copy;2021 Teknesis. All rights eserved
         </p>
         <SocialLinks />
         <p className="order-1 md:order-3">Nigeria</p>

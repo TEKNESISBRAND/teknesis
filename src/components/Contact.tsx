@@ -1,3 +1,5 @@
+"use client";
+
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../utils";
 import { useRouter } from "next/navigation";
@@ -21,7 +23,7 @@ export default function Contact() {
 
   return (
     <Link
-      href="/contact"
+      href="/talk"
       className="border-none block relative text-[1.9rem] md:text-[2.3rem] overflow-hidden text-white bg-[#1b1b1b] py-4 rounded-full font-bold"
     >
       <span

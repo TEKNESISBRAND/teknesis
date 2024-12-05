@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useLayoutEffect, useRef } from "react";
 import SplitType from "split-type";
 import { gsap } from "../utils";

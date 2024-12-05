@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Faq from "./Faq";
 import { faqs } from "../data";
