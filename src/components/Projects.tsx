@@ -1,7 +1,7 @@
 "use client";
 
 import Project from "./Project";
-import { IProject } from "../app/page";
+import { IProject } from "./Home";
 
 export default function Projects({
   showTitle,

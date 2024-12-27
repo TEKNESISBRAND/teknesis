@@ -7,7 +7,7 @@ import BrandProject from "@/teknesis/components/BrandProject";
 import WebProject from "@/teknesis/components/WebProject";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/teknesis/utils/firebase";
-import { IProject } from "@/teknesis/app/page";
+import { IProject } from "@/teknesis/components/Home";
 import { smoothScroll } from "@/teknesis/utils";
 
 export default function ProjectPage() {
