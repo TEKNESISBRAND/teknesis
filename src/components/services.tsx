@@ -1,6 +1,5 @@
 "use client";
 
-import Lottie from "lottie-react";
 import React, { useEffect } from "react";
 import graphics from "../../public/graphics.json";
 import branding from "../../public/branding.json";
@@ -9,6 +8,9 @@ import illustration from "../../public/graphics.json";
 import webDev from "../../public/graphics.json";
 import appDev from "../../public/graphics.json";
 import mlAi from "../../public/graphics.json";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -27,12 +29,6 @@ const AnimateInit = () => {
     { name: "App development", animation: appDev },
     { name: "Ml and AI research and development", animation: mlAi },
   ];
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Your code that uses window
-    }
-  }, []);
 
   return (
     <div>
@@ -61,7 +57,9 @@ const AnimateInit = () => {
                   : "mt-[30rem]"
               } md:w-1/4 w-full cursor-pointer transition-all duration-300 hover:scale-100 bg-black text-white p-10 h-[50rem] flex flex-col justify-center items-center`}
             >
-              <Lottie animationData={service.animation} loop={true} />
+              {typeof window !== "undefined" && (
+                <Lottie animationData={service.animation} loop={true} />
+              )}
               <p className="text-center text-[2.4rem] md:text-[4rem] leading-[140%] uppercase font-bold">
                 {service.name}
               </p>

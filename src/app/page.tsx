@@ -1,8 +1,11 @@
 import React from "react";
-import Home from "../components/Home";
+import dynamic from "next/dynamic";
+const Home = dynamic(() => import("@/teknesis/components/Home"), {
+  ssr: false,
+});
 
 const Page = () => {
-  return <Home />;
+  return <>{typeof window !== "undefined" && <Home />}</>;
 };
 
 export default Page;

@@ -1,8 +1,8 @@
 import Services from "@/teknesis/components/services";
 import React from "react";
 
-const Page = () => {
+const ServicesPage = () => {
   return <Services />;
 };
 
-export default Page;
+export default ServicesPage;

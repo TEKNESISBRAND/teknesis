@@ -3,7 +3,7 @@
 import Project from "@/teknesis/components/Project";
 import { smoothScroll } from "@/teknesis/utils";
 import Link from "next/link";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import "../app/(withheader)/projects/[type]/[slug]/page.css";
 import { collection, query, where } from "firebase/firestore";
 import { IProject } from "@/teknesis/components/Home";
@@ -13,11 +13,12 @@ import { db } from "@/teknesis/utils/firebase";
 export default function ProjectsPage() {
   const [selectedType, setSelectedType] = useState<string>("all");
   const [error, setError] = useState<any>(null);
-  const [projects, setProjects] = useState<IProject[] | null>(
-    JSON.parse(localStorage.getItem("projects") || "[]")
-  );
+  const [projects, setProjects] = useState<IProject[] | null>(null);
+  const [types, setTypes] = useState<string[]>([]);
 
-  const types = JSON.parse(localStorage.getItem("types") || "[]");
+  useEffect(() => {
+    setTypes(JSON.parse(localStorage.getItem("types") || "[]"));
+  }, []);
 
   useLayoutEffect(() => {
     (async () => {
@@ -36,7 +37,6 @@ export default function ProjectsPage() {
       querySnapshot.forEach((doc) => {
         Projects.push(doc.data() as IProject);
       });
-
       Projects.length > 0
         ? setProjects(Projects)
         : setError("No Project Found");
@@ -45,12 +45,10 @@ export default function ProjectsPage() {
         collection(db, "projects"),
         where("type", "==", selectedType)
       );
-
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         Projects.push(doc.data() as IProject);
       });
-
       Projects.length > 0
         ? setProjects(Projects)
         : setError("No Project Found");
@@ -60,7 +58,7 @@ export default function ProjectsPage() {
   useLayoutEffect(() => {
     localStorage.setItem("projectType", JSON.stringify(selectedType));
     setProjects(null);
-    getProjects(selectedType);
+    // getProjects(selectedType);
   }, [selectedType]);
 
   if (error) {
