@@ -95,7 +95,10 @@ const BrandProject = ({ project }: any) => {
             project.details.map((detail: any, index: number) => {
               if (index === 0) return;
               return (
-                <p className="mb-10 md:text-[3rem] text-[2rem] leading-none font-medium md:text-left text-justify">
+                <p
+                  key={index}
+                  className="mb-10 md:text-[3rem] text-[2rem] leading-none font-medium md:text-left text-justify"
+                >
                   {detail}
                 </p>
               );

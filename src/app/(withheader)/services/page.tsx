@@ -13,6 +13,14 @@ import mlAi from "../../../../public/graphics.json";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+const AnimateInit = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
+  return <></>;
+};
+
 const page = () => {
   const services = [
     { name: "graphic design", animation: graphics },
@@ -24,26 +32,9 @@ const page = () => {
     { name: "Ml and AI research and development", animation: mlAi },
   ];
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
     <div>
-      {/* graphic design
-full branding
-motion design 
-illustration
-web development
-App development
-Ml and A.i research and development 
-
-our  stacks
-C# java python, PHP, react , flutter , JavaScript 
-
-tools
-jira, Trello, figma , adobe studios */}
-
+      <AnimateInit />
       <section className="text-left min-h-[5rem] bg-white pt-20 md:pt-60 md:text-center px-[2rem] md:px-[10rem] pb-10">
         <div className="flex flex-col px-8 pb-40 md:items-center">
           <h1 className="text-[6rem] mb-[1.2rem] text-[#1b1b1b] [font-kerning:none]  md:text-[14rem] max-w-[120rem] leading-none">

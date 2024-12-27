@@ -26,9 +26,9 @@ export default function AboutPage() {
             <span className="font-bold text-[#001219]">TEKNESIS</span>
           </h1>
           <p className=" text-[2.4rem] md:text-[2.8rem] leading-[140%] opacity-70 max-w-[90rem]">
-            We're a forward-thinking tech agency dedicated to empowering B2B2C
-            businesses through innovative software solutions. Our mission is to
-            drive growth, pride, and success for our clients, fostering
+            We&apos;re a forward-thinking tech agency dedicated to empowering
+            B2B2C businesses through innovative software solutions. Our mission
+            is to drive growth, pride, and success for our clients, fostering
             meaningful connections with their customers.
           </p>
         </div>
@@ -162,7 +162,8 @@ export default function AboutPage() {
 
       <div className="bg-[#fff] flex flex-col px-8 mb-20 pb-20 md:items-center">
         <h1 className="text-[6rem] mb-[1.2rem] text-[#1b1b1b] [font-kerning:none] font-bold w-full md:text-[14rem] max-w-[150rem] text-center leading-none">
-          Join the Teknesis journey and let's transform your business together!
+          Join the Teknesis journey and let&apos;s transform your business
+          together!
         </h1>
       </div>
     </>

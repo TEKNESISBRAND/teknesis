@@ -35,13 +35,11 @@ export default function ProjectPage() {
         } else {
           setError("No Project Found");
         }
-
-        error && setError(error.message || error);
       }
     };
 
     getProjects();
-  }, []);
+  }, [slug]);
 
   return (
     <>
@@ -61,7 +59,7 @@ export default function ProjectPage() {
           )}
         </div>
       ) : (
-        <div className="loader_container">
+        <div className="loader_container bg-white">
           <div className="loader"></div>
         </div>
       )}

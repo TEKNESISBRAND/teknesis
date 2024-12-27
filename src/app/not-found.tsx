@@ -7,5 +7,5 @@ export default function NotFound() {
 
   useLayoutEffect(() => {
     router.replace("/");
-  }, []);
+  }, [router]);
 }
