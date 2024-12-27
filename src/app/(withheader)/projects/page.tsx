@@ -2,15 +2,18 @@
 
 import Project from "@/teknesis/components/Project";
 import { smoothScroll } from "@/teknesis/utils";
-import { supabase } from "@/teknesis/utils/supabase";
 import Link from "next/link";
 import { useLayoutEffect, useState } from "react";
 import "./[type]/[slug]/page.css";
+import { collection, query, where } from "firebase/firestore";
+import { IProject } from "../../page";
+import { getDocs } from "firebase/firestore";
+import { db } from "@/teknesis/utils/firebase";
 
 export default function ProjectsPage() {
   const [selectedType, setSelectedType] = useState<string>("all");
   const [error, setError] = useState<any>(null);
-  const [projects, setProjects] = useState<any>(
+  const [projects, setProjects] = useState<IProject[] | null>(
     JSON.parse(localStorage.getItem("projects") || "[]")
   );
 
@@ -26,25 +29,27 @@ export default function ProjectsPage() {
   }, []);
 
   const getProjects = async (selectedType: string) => {
+    const Projects: IProject[] = [];
     // console.log(selectedType);
     if (selectedType === "all") {
-      let { data: Projects, error }: any = await supabase
-        .from("Projects")
-        .select("*");
-
-      error && setError(error.message || error);
+      const querySnapshot = await getDocs(collection(db, "projects"));
+      querySnapshot.forEach((doc) => {
+        Projects.push(doc.data() as IProject);
+      });
 
       Projects.length > 0
         ? setProjects(Projects)
         : setError("No Project Found");
     } else {
-      let { data: Projects, error }: any = await supabase
-        .from("Projects")
-        .select("*")
-        // Filters
-        .eq("type", selectedType);
+      const q = query(
+        collection(db, "projects"),
+        where("type", "==", selectedType)
+      );
 
-      error && setError(error.message || error);
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        Projects.push(doc.data() as IProject);
+      });
 
       Projects.length > 0
         ? setProjects(Projects)
@@ -75,7 +80,7 @@ export default function ProjectsPage() {
   return (
     <>
       {projects ? (
-        <section className="px-12">
+        <section className="px-12 bg-white">
           <ul className="flex py-20">
             {projects &&
               types.map((type: string, index: number) => {

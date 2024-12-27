@@ -7,6 +7,7 @@ const BrandProject = ({ project }: any) => {
         className="w-full h-full object-cover"
         src={project?.images?.header_image}
         alt="project"
+        loading="eager"
       />
 
       <section className="text-[#1b1b1b] mt-20 md:mt-40 px-20">
@@ -23,7 +24,7 @@ const BrandProject = ({ project }: any) => {
 
         <img
           className="w-full h-full mt-20 md:mt-40 object-cover rounded-[20px] md:rounded-[60px]"
-          src={project?.images?.image1}
+          src={project?.images ? project?.images?.image1 : ""}
           alt="project"
         />
 
@@ -51,7 +52,7 @@ const BrandProject = ({ project }: any) => {
 
         <div className="mt-20 md:mt-40">
           <p className="md:text-[3rem] text-[2rem] leading-none font-medium md:text-left text-justify">
-            {project?.details[0]}
+            {project?.details ? project?.details[0] : ""}
           </p>
         </div>
 
@@ -90,14 +91,15 @@ const BrandProject = ({ project }: any) => {
         </div>
 
         <div className="my-20 md:my-40">
-          {project.details.map((detail: any, index: number) => {
-            if (index === 0) return;
-            return (
-              <p className="mb-10 md:text-[3rem] text-[2rem] leading-none font-medium md:text-left text-justify">
-                {detail}
-              </p>
-            );
-          })}
+          {project.details &&
+            project.details.map((detail: any, index: number) => {
+              if (index === 0) return;
+              return (
+                <p className="mb-10 md:text-[3rem] text-[2rem] leading-none font-medium md:text-left text-justify">
+                  {detail}
+                </p>
+              );
+            })}
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { smoothScroll } from "../utils";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   Faqs,
   Footer,
@@ -10,8 +10,18 @@ import {
   Projects,
   ServicesSection,
 } from "../components";
-import { supabase } from "../utils/supabase";
 import ScrollToTop from "../components/ScrollToTop";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../utils/firebase";
+
+export interface IProject {
+  name: string;
+  type: "brand" | "web" | "app";
+  tags: string[];
+  images: Record<string, string>;
+  details: string[];
+  brand_overview: string;
+}
 
 export default function Home() {
   useLayoutEffect(() => {
@@ -23,9 +33,20 @@ export default function Home() {
     })();
   }, []);
 
+  const [projects, setProjects] = useState<IProject[]>([]);
+
   useEffect(() => {
+    setProjects(JSON.parse(localStorage.getItem("projects") || "[]"));
+
     const getProjects = async () => {
-      let { data: Projects }: any = await supabase.from("Projects").select("*");
+      let Projects: IProject[] = [];
+
+      const querySnapshot = await getDocs(collection(db, "projects"));
+      querySnapshot.forEach((doc) => {
+        Projects.push(doc.data() as IProject);
+      });
+
+      setProjects(Projects);
 
       localStorage.setItem("projects", JSON.stringify(Projects));
 
@@ -44,7 +65,7 @@ export default function Home() {
       <Header />
       <Hero />
       <ServicesSection />
-      <Projects showTitle limit={3} />
+      {projects && <Projects showTitle limit={3} projects={projects} />}
       <Faqs />
       <Footer />
       <ScrollToTop />

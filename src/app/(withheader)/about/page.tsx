@@ -5,8 +5,18 @@ import Image from "next/image";
 import TextAnimation from "@/teknesis/components/TextAnimation";
 import whatwedo from "@/teknesis/data/whatwedo.json";
 import approaches from "@/teknesis/data/approach.json";
+import { useLayoutEffect } from "react";
+import { smoothScroll } from "@/teknesis/utils";
 
 export default function AboutPage() {
+  useLayoutEffect(() => {
+    (async () => {
+      const destroy = await smoothScroll();
+      return () => {
+        destroy();
+      };
+    })();
+  }, []);
   return (
     <>
       <section className="text-left min-h-[5rem] bg-white pt-20 md:pt-60 md:text-center">

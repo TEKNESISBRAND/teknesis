@@ -36,37 +36,38 @@ const WebProject = ({ project }: any) => {
           />
         </div>
 
-        {project?.details.splice(-1, 1).map((detail: any, index: number) => {
-          return (
-            <div
-              key={index}
-              className={`${
-                index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-              } mt-10 md:mt-20 gap-20 flex justify-between w-full items-center flex-col`}
-            >
-              <div>
-                <p className="md:text-[3rem] text-[2rem] leading-none font-medium md:text-left text-justify">
-                  {detail}
-                </p>
+        {project.details &&
+          project.details.splice(-1, 1).map((detail: any, index: number) => {
+            return (
+              <div
+                key={index}
+                className={`${
+                  index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
+                } mt-10 md:mt-20 gap-20 flex justify-between w-full items-center flex-col`}
+              >
+                <div>
+                  <p className="md:text-[3rem] text-[2rem] leading-none font-medium md:text-left text-justify">
+                    {detail}
+                  </p>
+                </div>
+                <img
+                  className="object-cover rounded-[20px] md:rounded-[60px] md:h-[70rem] h-[40rem] w-full md:w-[45%]"
+                  src={project?.images[`image${index + 2}`]}
+                  alt="project"
+                />
               </div>
-              <img
-                className="object-cover rounded-[20px] md:rounded-[60px] md:h-[70rem] h-[40rem] w-full md:w-[45%]"
-                src={project?.images[`image${index + 2}`]}
-                alt="project"
-              />
-            </div>
-          );
-        })}
+            );
+          })}
 
         <div className="my-20 md:my-40">
           <p className="md:text-[3rem] text-[2rem] mb-10 leading-none font-medium md:text-left text-justify">
-            {project?.details[project?.details.length - 1]}
+            {project.details && project?.details[project?.details.length - 1]}
           </p>
         </div>
 
         <img
           className="w-full md:h-[70rem] h-[40rem] mt-20 md:mt-40 object-cover rounded-[20px] md:rounded-[60px] mb-20"
-          src={project?.images.image3}
+          src={project.images ? project?.images.image3 : ""}
           alt="project"
         />
       </section>

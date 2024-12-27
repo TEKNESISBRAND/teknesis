@@ -1,11 +1,16 @@
 "use client";
-import React, { MouseEventHandler, useRef, useState } from "react";
-import Lottie from "lottie-react";
+import React, { MouseEventHandler, useRef, useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import talkbg from "../../../public/talkbg.json";
 import { gsap } from "../../utils";
 import Link from "next/link";
 
-const page = () => {
+// Dynamically import the LottieAnimation component with SSR disabled
+const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
+  ssr: false,
+});
+
+const Page = () => {
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [mouseData, setMouseData] = useState({
     x: 0,
@@ -93,6 +98,7 @@ const page = () => {
       ease: "power2.out",
     });
   };
+
   return (
     <div
       className="h-[100vh] w-full bg-black relative"
@@ -100,13 +106,11 @@ const page = () => {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
-      <Lottie
-        animationData={talkbg}
-        className="flex justify-center items-center h-full absolute top-0 left-0"
-        loop={true}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <LottieAnimation animationData={talkbg} />
+      </Suspense>
 
-      <div className="w-full h-full bg-black/60 backdrop-opacity-10 backdrop-invert text-white relative flex flex-col gap-[50px] justify-center items-center">
+      <div className="w-full h-full absolute top-0 left-0 bg-black/60 backdrop-opacity-10 backdrop-invert text-white flex flex-col gap-[50px] justify-center items-center">
         <div
           ref={elementRef}
           className="absolute z-10 p-[30px] pointer-events-none rounded-full bg-white overflow-hidden hidden md:block opacity-0 scale-0 top-0 left-0 w-[100px] h-[100px] mix-blend-difference"
@@ -123,7 +127,7 @@ const page = () => {
           </svg>
         </div>
 
-        <p className="py-5 text-[4.4rem] md:text-[20.6rem] leading-none font-extrabold cursor-default w-full md:w-[50%] text-center">
+        <p className="py-5 text-[3.4rem] md:text-[20.6rem] leading-none font-extrabold cursor-default w-full md:w-[50%] text-center">
           Have an idea?
         </p>
 
@@ -147,4 +151,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

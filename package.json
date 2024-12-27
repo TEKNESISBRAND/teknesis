@@ -11,8 +11,8 @@
   "dependencies": {
     "@studio-freight/lenis": "^1.0.33",
     "@studio-freight/react-lenis": "^0.0.40",
-    "@supabase/supabase-js": "^2.44.2",
     "aos": "^2.3.4",
+    "firebase": "^11.1.0",
     "gsap": "^3.12.4",
     "i": "^0.3.7",
     "lottie-react": "^2.4.0",

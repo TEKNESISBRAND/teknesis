@@ -17,7 +17,7 @@ export default function ContactPage() {
   }, []);
   return (
     <>
-      <section className="px-[16px] md:px-60 py-20 md:py-40 text-[#1b1b1b]">
+      <section className="px-[16px] md:px-60 py-20 md:py-40 text-[#1b1b1b] bg-white">
         <div className="mt-10">
           {pricing.map(
             ({ id, name: category, image, content, packages }, index) => (

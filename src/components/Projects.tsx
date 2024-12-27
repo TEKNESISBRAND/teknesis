@@ -1,20 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Project from "./Project";
+import { IProject } from "../app/page";
 
 export default function Projects({
   showTitle,
   limit,
+  projects,
 }: {
   showTitle: boolean;
   limit?: number;
+  projects?: IProject[];
 }) {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    setProjects(JSON.parse(localStorage.getItem("projects") || "[]"));
-  }, []);
   return (
     <section
       id="projects"
