@@ -32,6 +32,12 @@ const page = () => {
     { name: "Ml and AI research and development", animation: mlAi },
   ];
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Your code that uses window
+    }
+  }, []);
+
   return (
     <div>
       <AnimateInit />

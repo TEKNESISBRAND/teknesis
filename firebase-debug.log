@@ -1,0 +1,201 @@
+[debug] [2024-12-27T00:53:37.959Z] ----------------------------------------------------------------------
+[debug] [2024-12-27T00:53:37.966Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-12-27T00:53:37.968Z] CLI Version:   13.29.1
+[debug] [2024-12-27T00:53:37.968Z] Platform:      win32
+[debug] [2024-12-27T00:53:37.968Z] Node Version:  v23.4.0
+[debug] [2024-12-27T00:53:37.969Z] Time:          Fri Dec 27 2024 01:53:37 GMT+0100 (West Africa Standard Time)
+[debug] [2024-12-27T00:53:37.969Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-27T00:53:38.160Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-27T00:53:38.162Z] > authorizing via signed-in user (teknesisbrand101@gmail.com)
+[debug] [2024-12-27T00:53:38.162Z] [iam] checking project teknesis-website for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-12-27T00:53:38.165Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:38.165Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:38.167Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/teknesis-website:testIamPermissions [none]
+[debug] [2024-12-27T00:53:38.167Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/teknesis-website:testIamPermissions x-goog-quota-user=projects/teknesis-website
+[debug] [2024-12-27T00:53:38.168Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teknesis-website:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-12-27T00:53:39.720Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/teknesis-website:testIamPermissions 200
+[debug] [2024-12-27T00:53:39.721Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teknesis-website:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-12-27T00:53:39.722Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:39.722Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:39.722Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/teknesis-website [none]
+[debug] [2024-12-27T00:53:40.365Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/teknesis-website 200
+[debug] [2024-12-27T00:53:40.365Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/teknesis-website {"projectId":"teknesis-website","projectNumber":"491555147054","displayName":"Teknesis Website","name":"projects/teknesis-website","resources":{"hostingSite":"teknesis-website"},"state":"ACTIVE","etag":"1_c947847a-7b63-444c-8001-398a4cdca9b5"}
+[debug] [2024-12-27T00:53:46.908Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:46.908Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:46.908Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/teknesis-website/sites pageToken=&pageSize=10
+[debug] [2024-12-27T00:53:48.538Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/teknesis-website/sites 200
+[debug] [2024-12-27T00:53:48.539Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/teknesis-website/sites {"sites":[{"name":"projects/teknesis-website/sites/teknesis-website","defaultUrl":"https://teknesis-website.web.app","appId":"1:491555147054:web:b34c1f5438ed1b97347ebf","type":"DEFAULT_SITE"}]}
+[debug] [2024-12-27T00:53:48.539Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:48.540Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:53:48.540Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:491555147054:web:b34c1f5438ed1b97347ebf/config [none]
+[debug] [2024-12-27T00:53:49.434Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:491555147054:web:b34c1f5438ed1b97347ebf/config 200
+[debug] [2024-12-27T00:53:49.434Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:491555147054:web:b34c1f5438ed1b97347ebf/config {"projectId":"teknesis-website","appId":"1:491555147054:web:b34c1f5438ed1b97347ebf","storageBucket":"teknesis-website.firebasestorage.app","apiKey":"AIzaSyBpUv8am6Wofhxcpb8bFyXxG7xANvZbxOM","authDomain":"teknesis-website.firebaseapp.com","messagingSenderId":"491555147054","measurementId":"G-4MJ9FDHWPL"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-12-27T00:54:05.459Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:54:05.459Z] Checked if tokens are valid: true, expires at: 1735262637089
+[debug] [2024-12-27T00:54:05.460Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/teknesis-website/sites/teknesis-website [none]
+[debug] [2024-12-27T00:54:06.892Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/teknesis-website/sites/teknesis-website 200
+[debug] [2024-12-27T00:54:06.893Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/teknesis-website/sites/teknesis-website {"name":"projects/teknesis-website/sites/teknesis-website","defaultUrl":"https://teknesis-website.web.app","appId":"1:491555147054:web:b34c1f5438ed1b97347ebf","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.0.4
+
+[info]    - Environments: .env.local
+
+   Creating an optimized production build ...
+
+[info] (node:53920) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+./src/components/BrandProject.tsx
+6:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+25:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+39:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+45:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+59:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+73:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+79:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+85:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+109:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/components/WebProject.tsx
+32:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+53:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+68:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[info]    Collecting page data ...
+
+[info]    Generating static pages (0/10) ...
+
+[info] ReferenceError: window is not defined
+    at new a (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\371.js:1:4368)
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\0.js:1:16289
+
+[info]    Generating static pages (2/10) 
+   Generating static pages (4/10) 
+
+[info] ReferenceError: window is not defined
+    at new a (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\371.js:1:4368)
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\0.js:1:16289
+ReferenceError: document is not defined
+    at createTag (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:17473)
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:30365
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:30488
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:33313
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:17138
+    at 9918 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:17142)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at 8229 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:323306)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at F (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:91937)
+
+Error occurred prerendering page "/services". Read more: https://nextjs.org/docs/messages/prerender-error
+ReferenceError: document is not defined
+    at createTag (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:17473)
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:30365
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:30488
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:33313
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:17138
+    at 9918 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:17142)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at 8229 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\services\page.js:1:323306)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at F (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:91937)
+ReferenceError: window is not defined
+    at new a (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\371.js:1:4368)
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\talk\page.js:1:695949
+[2024-12-27T00:55:22.366Z]  @firebase/analytics: Analytics: Firebase Analytics is not supported in this environment. Wrap initialization of analytics in analytics.isSupported() to prevent initialization in unsupported environments. Details: (1) Cookies are not available. (analytics/invalid-analytics-context).
+ReferenceError: window is not defined
+    at new a (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\371.js:1:4368)
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\0.js:1:16289
+ReferenceError: window is not defined
+    at tv (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:623:550)
+    at tQ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:934)
+    at O.instanceFactory (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1703)
+    at P.getOrInitializeService (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2773)
+    at P.initialize (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2148)
+    at tJ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1330)
+    at tY (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1151)
+    at 8059 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\projects\page.js:1:5291)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at 9213 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\projects\page.js:1:3404)
+
+[info] 
+Error occurred prerendering page "/projects". Read more: https://nextjs.org/docs/messages/prerender-error
+ReferenceError: window is not defined
+    at tv (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:623:550)
+    at tQ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:934)
+    at O.instanceFactory (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1703)
+    at P.getOrInitializeService (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2773)
+    at P.initialize (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2148)
+    at tJ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1330)
+    at tY (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1151)
+    at 8059 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\projects\page.js:1:5291)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at 9213 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\(withheader)\projects\page.js:1:3404)
+
+[info]    Generating static pages (7/10) 
+ ✓ Generating static pages (10/10) 
+
+[info] [2024-12-27T00:55:22.892Z]  @firebase/analytics: Analytics: Firebase Analytics is not supported in this environment. Wrap initialization of analytics in analytics.isSupported() to prevent initialization in unsupported environments. Details: (1) Cookies are not available. (analytics/invalid-analytics-context).
+ReferenceError: window is not defined
+    at new a (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\371.js:1:4368)
+    at C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\0.js:1:16289
+ReferenceError: window is not defined
+    at tv (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:623:550)
+    at tQ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:934)
+    at O.instanceFactory (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1703)
+    at P.getOrInitializeService (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2773)
+    at P.initialize (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2148)
+    at tJ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1330)
+    at tY (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1151)
+    at 8059 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\page.js:1:13565)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at 1532 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\page.js:1:3078)
+
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+ReferenceError: window is not defined
+    at tv (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:623:550)
+    at tQ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:934)
+    at O.instanceFactory (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1703)
+    at P.getOrInitializeService (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2773)
+    at P.initialize (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:188:2148)
+    at tJ (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1330)
+    at tY (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\chunks\530.js:668:1151)
+    at 8059 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\page.js:1:13565)
+    at t (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\webpack-runtime.js:1:128)
+    at 1532 (C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\server\app\page.js:1:3078)
+
+[info] 
+
+[info] > Export encountered errors on following paths:
+	/(withheader)/projects/page: /projects
+	/(withheader)/services/page: /services
+	/page: /
+
+[debug] [2024-12-27T00:55:26.404Z] Error: ENOENT: no such file or directory, open 'C:\Users\savio\Documents\Work\Gigs\Teknesis\teknesis\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
