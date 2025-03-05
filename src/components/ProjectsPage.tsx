@@ -58,7 +58,7 @@ export default function ProjectsPage() {
   useLayoutEffect(() => {
     localStorage.setItem("projectType", JSON.stringify(selectedType));
     setProjects(null);
-    // getProjects(selectedType);
+    getProjects(selectedType);
   }, [selectedType]);
 
   if (error) {

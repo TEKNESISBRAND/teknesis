@@ -1,32 +1,38 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { BiArrowToTop } from "react-icons/bi";
+import { useEffect, useState } from "react";
+import { FaArrowUp } from "react-icons/fa";
 
-const ScrollToTop = () => {
-  const [open, setOpen] = useState(false);
-  const getScrollPosition = () => {
-    const top = window.pageYOffset || document.documentElement.scrollTop;
-    setOpen(() => {
-      return top > 200 ? true : false;
-    });
-  };
+export default function ScrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setInterval(getScrollPosition, 1000);
-  });
-  return (
-    <div
-      onClick={() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }}
-      className={`${
-        open ? "bottom-10" : "-bottom-28"
-      } bg-black text-white fixed right-10 text-[20px] w-[50px] h-[50px] rounded-[8px] flex items-center justify-center cursor-pointer transition-all duration-1000`}
-    >
-      <BiArrowToTop size={30} />
-    </div>
-  );
-};
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
 
-export default ScrollToTop;
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (!isVisible) {
+    return null;
+  }
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className="fixed bottom-4 right-4 bg-black text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-colors z-50"
+    >
+      <FaArrowUp />
+    </button>
+  );
+}

@@ -1,12 +1,18 @@
-import React from "react";
-import dynamic from "next/dynamic";
-const ProjectsPage = dynamic(
-  () => import("@/teknesis/components/ProjectsPage"),
-  { ssr: false }
-);
+"use client";
 
-const Page = () => {
-  return <> {typeof window !== "undefined" && <ProjectsPage />}</>;
-};
+import { useEffect, useState } from "react";
+import ProjectsPage from "@/teknesis/components/ProjectsPage";
 
-export default Page;
+export default function Page() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
+  return <ProjectsPage />;
+}

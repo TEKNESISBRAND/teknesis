@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import graphics from "../../public/graphics.json";
 import branding from "../../public/branding.json";
 import motion from "../../public/graphics.json";
@@ -16,7 +16,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const AnimateInit = () => {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true);
     AOS.init();
   }, []);
 
@@ -57,7 +60,7 @@ const AnimateInit = () => {
                   : "mt-[30rem]"
               } md:w-1/4 w-full cursor-pointer transition-all duration-300 hover:scale-100 bg-black text-white p-10 h-[50rem] flex flex-col justify-center items-center`}
             >
-              {typeof window !== "undefined" && (
+              {isClient && (
                 <Lottie animationData={service.animation} loop={true} />
               )}
               <p className="text-center text-[2.4rem] md:text-[4rem] leading-[140%] uppercase font-bold">

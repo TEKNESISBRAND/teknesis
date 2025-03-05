@@ -1,44 +1,47 @@
-import gsap from "./customGsap"
-import { LenisProps } from "../types"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+"use client";
 
-const Lenis = async(props: LenisProps) => { 
-    return new (await import("@studio-freight/lenis")).default(props)
-}
+import gsap from "./customGsap";
+import { LenisProps } from "../types";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const Lenis = async (props: LenisProps) => {
+  return new (await import("@studio-freight/lenis")).default(props);
+};
 
-const temp = Lenis({
-    duration: 2,
-    easing: (t)=> (t===1 ? 1: 1-Math.pow(2, -10*t)),
-    orientation: "vertical",
-    smoothWheel: true,
-})
- 
+let lenisInstance: any = null;
+
 const init = async () => {
-    
-    const context = gsap.context(async ()=> {
-           
-        const lenis = await temp
-        
-        lenis.on("scroll", ()=> {
-                ScrollTrigger.update()
-        })
-        
-        const loop = (time: DOMHighResTimeStamp) => {
-            lenis.raf(time)
-            
-            requestAnimationFrame(loop)
-        }
-        requestAnimationFrame(loop)
+  if (typeof window === "undefined") return () => {};
 
-        return () => lenis.destroy()
+  const context = gsap.context(async () => {
+    try {
+      lenisInstance = await Lenis({
+        duration: 2,
+        easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        smoothWheel: true,
+      });
 
-    })
+      lenisInstance.on("scroll", () => {
+        ScrollTrigger.update();
+      });
 
-    return ()=> context.revert()
-}
+      const loop = (time: DOMHighResTimeStamp) => {
+        lenisInstance.raf(time);
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+    } catch (error) {
+      console.error("Error initializing Lenis:", error);
+    }
+  });
 
-export const lenis = async () => (await temp)
+  return () => {
+    if (lenisInstance) {
+      lenisInstance.destroy();
+    }
+    context.revert();
+  };
+};
 
-
-export default init
+export default init;

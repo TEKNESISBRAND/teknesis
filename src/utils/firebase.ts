@@ -1,5 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+"use client";
+
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { Analytics, getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -12,6 +14,15 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
-export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
-export const db = getFirestore(app);
+// Initialize Firebase
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Initialize Analytics only on client side
+// let analytics: Analytics | undefined;
+
+// if (typeof window !== "undefined") {
+//   isSupported().then((yes) => yes && (analytics = getAnalytics(app)));
+// }
+
+export { app, db };

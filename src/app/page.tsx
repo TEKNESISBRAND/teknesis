@@ -1,11 +1,18 @@
-import React from "react";
-import dynamic from "next/dynamic";
-const Home = dynamic(() => import("@/teknesis/components/Home"), {
-  ssr: false,
-});
+"use client";
 
-const Page = () => {
-  return <>{typeof window !== "undefined" && <Home />}</>;
-};
+import { useEffect, useState } from "react";
+import Home from "@/teknesis/components/Home";
 
-export default Page;
+export default function Page() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
+  return <Home />;
+}

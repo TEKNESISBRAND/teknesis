@@ -24,41 +24,57 @@ export interface IProject {
 }
 
 export default function Home() {
-  useLayoutEffect(() => {
-    (async () => {
-      const destroy = await smoothScroll();
-      return () => {
-        destroy();
-      };
-    })();
-  }, []);
-
   const [projects, setProjects] = useState<IProject[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setProjects(JSON.parse(localStorage.getItem("projects") || "[]"));
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
 
     const getProjects = async () => {
-      let Projects: IProject[] = [];
+      try {
+        let Projects: IProject[] = [];
+        const querySnapshot = await getDocs(collection(db, "projects"));
+        querySnapshot.forEach((doc) => {
+          Projects.push(doc.data() as IProject);
+        });
 
-      const querySnapshot = await getDocs(collection(db, "projects"));
-      querySnapshot.forEach((doc) => {
-        Projects.push(doc.data() as IProject);
-      });
+        setProjects(Projects);
+        localStorage.setItem("projects", JSON.stringify(Projects));
 
-      setProjects(Projects);
-
-      localStorage.setItem("projects", JSON.stringify(Projects));
-
-      const types = Array.from(
-        new Set(["all", ...Projects.map(({ type }: any) => type)])
-      );
-
-      localStorage.setItem("types", JSON.stringify(types));
+        const types = Array.from(
+          new Set(["all", ...Projects.map(({ type }: any) => type)])
+        );
+        localStorage.setItem("types", JSON.stringify(types));
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        setProjects(JSON.parse(localStorage.getItem("projects") || "[]"));
+      }
     };
 
     getProjects();
-  }, []);
+  }, [isClient]);
+
+  useLayoutEffect(() => {
+    if (!isClient) return;
+
+    let destroy: (() => void) | undefined;
+    const initScroll = async () => {
+      destroy = await smoothScroll();
+    };
+    initScroll();
+
+    return () => {
+      if (destroy) destroy();
+    };
+  }, [isClient]);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <main className="relative z-10">
