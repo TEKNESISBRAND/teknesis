@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Props = {
   category: string;
   name: string;
@@ -29,12 +31,12 @@ export default function Pacakge({ category, name, includes, price }: Props) {
         <p className="text-[3rem] hidden md:block mt-10 md:mt-0  mb-8 font-bold">
           {price}
         </p>
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSd0XwvaTpAp1Tv9P1_1G0iW21jDgaYHMZpi7nd28OYtnBvJxg/viewform"
+        <Link
+          href="/talk"
           className="border rounded-full leading-none border-[#1b1b1b] text-[2rem] p-10 py-3"
         >
           Let&apos;s talk
-        </a>
+        </Link>
       </div>
     </div>
   );

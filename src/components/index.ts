@@ -9,3 +9,4 @@ export { default as Contact } from "./Contact";
 export { default as Header } from "./Header";
 export { default as SocialLinks } from "./SocialLinks";
 export { default as Package } from "./Package";
+export { default as ContactForm } from "./ContactForm";

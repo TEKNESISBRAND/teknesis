@@ -3,7 +3,7 @@ import React, { MouseEventHandler, useRef, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import talkbg from "../../../public/talkbg.json";
 import { gsap } from "../../utils";
-import Link from "next/link";
+import ContactForm from "@/teknesis/components/ContactForm";
 
 // Dynamically import the LottieAnimation component with SSR disabled
 const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
@@ -100,51 +100,53 @@ const Page = () => {
   };
 
   return (
-    <div
-      className="h-[100vh] w-full bg-black relative"
-      onMouseEnter={onMouseEnter}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-    >
-      <Suspense fallback={<div>Loading...</div>}>
-        <LottieAnimation animationData={talkbg} />
-      </Suspense>
+    <div className="min-h-screen w-full bg-black relative">
+      <div className="fixed inset-0 w-full h-full">
+        <Suspense fallback={null}>
+          <LottieAnimation animationData={talkbg} />
+        </Suspense>
+      </div>
 
-      <div className="w-full h-full absolute top-0 left-0 bg-black/60 backdrop-opacity-10 backdrop-invert text-white flex flex-col gap-[50px] justify-center items-center">
-        <div
-          ref={elementRef}
-          className="absolute z-10 p-[30px] pointer-events-none rounded-full bg-white overflow-hidden hidden md:block opacity-0 scale-0 top-0 left-0 w-[100px] h-[100px] mix-blend-difference"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
-            viewBox="0 0 24 24"
+      <div className="relative w-full min-h-screen bg-black/60 backdrop-opacity-10 backdrop-invert text-white">
+        <div className="mx-auto w-full max-w-[1600px] px-[24px] md:px-40 py-24 md:py-32 flex flex-col md:flex-row md:items-start gap-16 md:gap-24">
+          {/* The magnetic blob lives here only — it would fight the form fields. */}
+          <div
+            className="md:flex-1 md:sticky md:top-32 relative"
+            onMouseEnter={onMouseEnter}
+            onMouseMove={onMouseMove}
+            onMouseLeave={onMouseLeave}
           >
-            <path
-              fill="#fff"
-              d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"
-            />
-          </svg>
-        </div>
+            <div
+              ref={elementRef}
+              className="absolute z-10 p-[30px] pointer-events-none rounded-full bg-white overflow-hidden hidden md:block opacity-0 scale-0 top-0 left-0 w-[100px] h-[100px] mix-blend-difference"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-full"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#fff"
+                  d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"
+                />
+              </svg>
+            </div>
 
-        <p className="py-5 text-[3.4rem] md:text-[20.6rem] leading-none font-extrabold cursor-default w-full md:w-[50%] text-center">
-          Have an idea?
-        </p>
+            <h1 className="text-[5.6rem] md:text-[9rem] leading-none font-extrabold cursor-default">
+              Have an idea?
+            </h1>
+            <p className="mt-8 text-[2.2rem] md:text-[2.6rem] leading-snug text-white/70 md:max-w-[80%]">
+              Tell us what you&apos;re building. Share a few details and we&apos;ll
+              come back to you with next steps.
+            </p>
+          </div>
 
-        <div className="flex flex-row gap-[20px] justify-center items-center">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSd0XwvaTpAp1Tv9P1_1G0iW21jDgaYHMZpi7nd28OYtnBvJxg/viewform"
-            className="border bg-white text-[#1b1b1b] px-[40px] m-0 pb-[10px] flex flex-row items-center justify-center rounded-full leading-none border-[#white] text-[2rem] md:text-[5rem] h-[80px] w-max"
-          >
-            Let&apos;s talk
-          </a>
-
-          <Link
-            href={"/"}
-            className="border bg-transparent text-white px-[40px] m-0 pb-[10px] flex items-center justify-center rounded-full leading-none border-white text-[2rem] md:text-[5rem] h-[80px] w-max"
-          >
-            Go Home
-          </Link>
+          {/* The Lottie art is busy — the form needs its own ground to stay legible.
+              A solid fill rather than backdrop-blur: blurring over an always-animating
+              background recomposites every frame, which is costly on low-end mobile. */}
+          <div className="md:flex-1 w-full bg-white rounded-[16px] md:rounded-[32px] p-10 md:p-16">
+            <ContactForm />
+          </div>
         </div>
       </div>
     </div>

@@ -43,3 +43,5 @@ branding projects for webiste
 website package
 firebase-debug.log
 .firebase
+# playwright mcp scratch output
+.playwright-mcp
