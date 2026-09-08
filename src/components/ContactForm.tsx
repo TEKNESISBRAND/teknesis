@@ -13,16 +13,16 @@ const PROJECT_TYPES = [
 
 type Errors = Record<string, string>;
 
-// Type runs above the site's 2.6rem body copy and stays bold — these are the
-// fields people have to read and fill, so they lead rather than recede.
+// Sits at the site's 2.6rem body scale — bold for legibility, but no longer
+// shouting over the rest of the page.
 const fieldClasses =
-  "w-full bg-transparent border-b-2 border-[#1b1b1b] border-opacity-30 focus:border-opacity-100 outline-none text-[#1b1b1b] font-bold placeholder:font-normal placeholder:text-[#1b1b1b] placeholder:text-opacity-40 text-[3.4rem] md:text-[3.6rem] py-6 transition-colors";
+  "w-full bg-transparent border-b-2 border-[#1b1b1b] border-opacity-30 focus:border-opacity-100 outline-none text-[#1b1b1b] font-bold placeholder:font-normal placeholder:text-[#1b1b1b] placeholder:text-opacity-40 text-[2.6rem] md:text-[2.8rem] py-5 transition-colors";
 
 const labelClasses =
-  "block text-[2.6rem] md:text-[2.8rem] font-bold uppercase tracking-wide text-[#1b1b1b] mb-3";
+  "block text-[2rem] md:text-[2.2rem] font-bold uppercase tracking-wide text-[#1b1b1b] mb-2";
 
 const errorClasses =
-  "text-[2.2rem] md:text-[2.4rem] font-bold text-red-600 mt-3";
+  "text-[1.8rem] md:text-[1.9rem] font-bold text-red-600 mt-3";
 
 export default function ContactForm() {
   const [projectType, setProjectType] = useState("");
@@ -92,23 +92,23 @@ export default function ContactForm() {
   if (status === "sent") {
     return (
       <div className="text-[#1b1b1b]">
-        <p className="text-[4rem] md:text-[6rem] leading-none font-extrabold">
+        <p className="text-[3.6rem] md:text-[5rem] leading-none font-extrabold">
           Thank you.
         </p>
-        <p className="mt-6 text-[2.8rem] md:text-[3rem] font-bold text-[#1b1b1b] text-opacity-70">
+        <p className="mt-6 text-[2.4rem] md:text-[2.6rem] font-bold text-[#1b1b1b] text-opacity-70">
           We&apos;ve got your brief and will be in touch shortly.
         </p>
         <div className="flex flex-wrap gap-6 mt-12">
           <button
             type="button"
             onClick={() => setStatus("idle")}
-            className="border-2 border-[#1b1b1b] text-[#1b1b1b] px-14 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[3rem] h-[96px] w-max"
+            className="border-2 border-[#1b1b1b] text-[#1b1b1b] px-12 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[2.3rem] h-[76px] w-max"
           >
             Send another
           </button>
           <Link
             href="/"
-            className="bg-[#1b1b1b] text-white px-14 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[3rem] h-[96px] w-max"
+            className="bg-[#1b1b1b] text-white px-12 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[2.3rem] h-[76px] w-max"
           >
             Go Home
           </Link>
@@ -187,7 +187,7 @@ export default function ContactForm() {
                   setProjectType(type);
                   clearError("projectType");
                 }}
-                className={`px-8 py-5 rounded-full text-[2.4rem] md:text-[2.6rem] font-bold leading-none border-2 transition-colors ${
+                className={`px-7 py-4 rounded-full text-[1.9rem] md:text-[2rem] font-bold leading-none border-2 transition-colors ${
                   selected
                     ? "bg-[#1b1b1b] text-white border-[#1b1b1b]"
                     : "bg-[#f3f3f3] text-[#1b1b1b] border-[#f3f3f3] hover:border-[#1b1b1b]"
@@ -265,14 +265,14 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="bg-[#1b1b1b] text-white px-14 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[3rem] h-[96px] w-max disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-[#1b1b1b] text-white px-12 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[2.3rem] h-[76px] w-max disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "sending" ? "Sending…" : "Send brief"}
         </button>
 
         <Link
           href="/"
-          className="border-2 border-[#1b1b1b] text-[#1b1b1b] px-14 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[3rem] h-[96px] w-max"
+          className="border-2 border-[#1b1b1b] text-[#1b1b1b] px-12 pb-[6px] flex items-center justify-center rounded-full leading-none font-bold text-[2.3rem] h-[76px] w-max"
         >
           Go Home
         </Link>
